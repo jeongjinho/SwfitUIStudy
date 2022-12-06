@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E918E0FA28F8F9EA0041C649 /* ViewModifierBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E918E0F928F8F9EA0041C649 /* ViewModifierBootcamp.swift */; };
+		E938322F293DB6E600414CEC /* FuturesBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E938322E293DB6E600414CEC /* FuturesBootcamp.swift */; };
 		E95F51B529222D3D003B9DA9 /* PreferencKeyBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F51B429222D3D003B9DA9 /* PreferencKeyBootcamp.swift */; };
 		E95F51B82922560A003B9DA9 /* GeometryPreferenceKeyBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F51B72922560A003B9DA9 /* GeometryPreferenceKeyBootcamp.swift */; };
 		E95F51BA292388BB003B9DA9 /* ScrollViewOffsetPreferenceKeyBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F51B9292388BB003B9DA9 /* ScrollViewOffsetPreferenceKeyBootcamp.swift */; };
@@ -65,6 +66,7 @@
 
 /* Begin PBXFileReference section */
 		E918E0F928F8F9EA0041C649 /* ViewModifierBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifierBootcamp.swift; sourceTree = "<group>"; };
+		E938322E293DB6E600414CEC /* FuturesBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuturesBootcamp.swift; sourceTree = "<group>"; };
 		E95F51B429222D3D003B9DA9 /* PreferencKeyBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencKeyBootcamp.swift; sourceTree = "<group>"; };
 		E95F51B72922560A003B9DA9 /* GeometryPreferenceKeyBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryPreferenceKeyBootcamp.swift; sourceTree = "<group>"; };
 		E95F51B9292388BB003B9DA9 /* ScrollViewOffsetPreferenceKeyBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewOffsetPreferenceKeyBootcamp.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				E9CA09BC2911E1DE003DF502 /* AnimateableDataBootcamp.swift */,
 				E980EF00291B29CF00CB2DD4 /* GenericsBootcamp.swift */,
 				E980EF02291B30F600CB2DD4 /* ViewBuilderBootcamp.swift */,
+				E938322E293DB6E600414CEC /* FuturesBootcamp.swift */,
 				E95F51B6292255C7003B9DA9 /* PreferenceKey */,
 			);
 			path = master;
@@ -447,6 +450,7 @@
 				E95F51B529222D3D003B9DA9 /* PreferencKeyBootcamp.swift in Sources */,
 				E9D313CB28D1E49F0053DC57 /* CacheBootCamp.swift in Sources */,
 				E99B48DE290F4A580097F4C0 /* MatchedGeometryBootcamp.swift in Sources */,
+				E938322F293DB6E600414CEC /* FuturesBootcamp.swift in Sources */,
 				E99B48D8290A942C0097F4C0 /* AnyTransitionBootcamp.swift in Sources */,
 				E9CA09BD2911E1DE003DF502 /* AnimateableDataBootcamp.swift in Sources */,
 				E9D3141A28D371560053DC57 /* DownloadingImagesRow.swift in Sources */,
