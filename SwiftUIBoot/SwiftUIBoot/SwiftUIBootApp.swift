@@ -11,7 +11,7 @@ import SwiftUI
 struct SwiftUIBootApp: App {
     var body: some Scene {
         WindowGroup {
-            StructClassActorBootcamp()
+            CircleIndicator()
         }
     }
 }

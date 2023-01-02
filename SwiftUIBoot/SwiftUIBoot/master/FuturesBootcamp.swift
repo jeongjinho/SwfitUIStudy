@@ -7,6 +7,8 @@
 
 import SwiftUI
 import Combine
+import AuthenticationServices
+
 class FuturesBootcampViewModel: ObservableObject {
     
     @Published var title: String = "Staring Title"
@@ -15,6 +17,9 @@ class FuturesBootcampViewModel: ObservableObject {
     
     init() {
         download()
+     
+        
+        
     }
     
     func download() {
@@ -92,6 +97,9 @@ struct FuturesBootcamp: View {
     @StateObject private var vm = FuturesBootcampViewModel()
     var body: some View {
         Text(vm.title)
+        
+        
+       
     }
 }
 
@@ -100,3 +108,22 @@ struct FuturesBootcamp_Previews: PreviewProvider {
         FuturesBootcamp()
     }
 }
+
+
+
+//SignInWithAppleButton(.signIn) { request in
+//    request.reqestedScopes = [.fullName, .email]
+//} onCompletion: { result in
+//    switch result {
+//        case .success(let authResults):
+//            print("Authorisation successful")
+//        case .error(let error):
+//            print("Authorisation failed: \(error.localizedDescription)")
+//    }
+//}
+//// black button
+//.signInWithAppleButtonStyle(.black)
+//// white button
+//.signInWithAppleButtonStyle(.white)
+//// white with border
+//.signInWithAppleButtonStyle(.whiteOutline)

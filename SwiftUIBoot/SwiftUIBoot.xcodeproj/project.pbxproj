@@ -23,6 +23,7 @@
 		E99B48E22910A1E50097F4C0 /* CustomShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99B48E12910A1E50097F4C0 /* CustomShapes.swift */; };
 		E99B48F22910B4360097F4C0 /* AsyncLetBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99B48F12910B4360097F4C0 /* AsyncLetBootcamp.swift */; };
 		E99B48F42910BA810097F4C0 /* CustomCurvesBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99B48F32910BA810097F4C0 /* CustomCurvesBootcamp.swift */; };
+		E9B473EF29407871004885E2 /* CirclePathBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B473EE29407871004885E2 /* CirclePathBootcamp.swift */; };
 		E9B4C96628BDA05C0060C5FE /* SwiftUIBootApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B4C96528BDA05C0060C5FE /* SwiftUIBootApp.swift */; };
 		E9B4C96828BDA05C0060C5FE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B4C96728BDA05C0060C5FE /* ContentView.swift */; };
 		E9B4C96A28BDA05C0060C5FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9B4C96928BDA05C0060C5FE /* Assets.xcassets */; };
@@ -81,6 +82,7 @@
 		E99B48E12910A1E50097F4C0 /* CustomShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShapes.swift; sourceTree = "<group>"; };
 		E99B48F12910B4360097F4C0 /* AsyncLetBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncLetBootcamp.swift; sourceTree = "<group>"; };
 		E99B48F32910BA810097F4C0 /* CustomCurvesBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCurvesBootcamp.swift; sourceTree = "<group>"; };
+		E9B473EE29407871004885E2 /* CirclePathBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclePathBootcamp.swift; sourceTree = "<group>"; };
 		E9B4C96228BDA05C0060C5FE /* SwiftUIBoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIBoot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9B4C96528BDA05C0060C5FE /* SwiftUIBootApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIBootApp.swift; sourceTree = "<group>"; };
 		E9B4C96728BDA05C0060C5FE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				E980EF00291B29CF00CB2DD4 /* GenericsBootcamp.swift */,
 				E980EF02291B30F600CB2DD4 /* ViewBuilderBootcamp.swift */,
 				E938322E293DB6E600414CEC /* FuturesBootcamp.swift */,
+				E9B473EE29407871004885E2 /* CirclePathBootcamp.swift */,
 				E95F51B6292255C7003B9DA9 /* PreferenceKey */,
 			);
 			path = master;
@@ -443,6 +446,7 @@
 				E9B4C99028BDAC570060C5FE /* SubscriberBootCamp.swift in Sources */,
 				E9D3141C28D372090053DC57 /* DownloadingImageView.swift in Sources */,
 				E9D3141828D337970053DC57 /* PhotoModelDataService.swift in Sources */,
+				E9B473EF29407871004885E2 /* CirclePathBootcamp.swift in Sources */,
 				E9B4C96628BDA05C0060C5FE /* SwiftUIBootApp.swift in Sources */,
 				E98544D029153AC800596E5B /* TaskGroupBootcamp.swift in Sources */,
 				E99B48F42910BA810097F4C0 /* CustomCurvesBootcamp.swift in Sources */,
@@ -613,6 +617,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftUIBoot/Preview Content\"";
+				DEVELOPMENT_TEAM = SB46A3BWSY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -641,6 +646,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftUIBoot/Preview Content\"";
+				DEVELOPMENT_TEAM = SB46A3BWSY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
