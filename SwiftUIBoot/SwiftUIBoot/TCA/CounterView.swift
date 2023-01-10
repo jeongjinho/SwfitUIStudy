@@ -6,7 +6,10 @@
 //
 
 import SwiftUI
-
+import ComposableArchitecture
+import FavoritePrimes
+import Counter
+import PrimeModal
 // (A) -> A
 // (inout A) -> Void
 
@@ -15,21 +18,6 @@ import SwiftUI
 
 //(Value, Action) -> Value
 //(inout Value, Action) -> Void
-
-final class Store<Value, Action>: ObservableObject {
-    
-    let reducer: (inout Value , Action) -> Void
-    @Published var value: Value
-    init(initialValue: Value, reducer: @escaping (inout Value, Action) -> Void) {
-        self.reducer = reducer
-        self.value = initialValue
-    }
-    
-    func send(_ action :Action) {
-        self.reducer(&self.value, action)
-        
-    }
-}
 
 
 struct AppState {
@@ -43,8 +31,7 @@ struct AppState {
         let name: String
         let bio: String
     }
-
-
+    
     struct Activity {
         let timestamp: Date
         let type: ActivityType
@@ -53,7 +40,20 @@ struct AppState {
             case addedFavoritePrime(Int)
             case removeFavoritePrime(Int)
         }
+    }
+}
+
+extension AppState {
+    
+    var primeModal: PrimeModalState {
+        get {
+            PrimeModalState(count: self.count, favoritePrimes: self.favoritePrimes)
+        }
         
+        set {
+            self.count = newValue.count
+            self.favoritePrimes = newValue.favoritePrimes
+        }
     }
 }
 
@@ -62,7 +62,6 @@ extension AppState {
     mutating func addFavoritePirme() {
         self.favoritePrimes.append(self.count)
         self.activityFeed.append(Activity(timestamp: Date(), type: .addedFavoritePrime(self.count)))
-        
     }
     
     mutating func removeFavoritePirme(prime: Int) {
@@ -78,41 +77,24 @@ extension AppState {
         for index in indexSet {
             self.favoritePrimes.remove(at: index)
         }
-       
     }
-    
 }
-
-enum CounterAction {
-    case incrTapped
-    case decrTapped
-}
-
-enum PrimeModelAction {
-    case saveFavoritePrimeTapped
-    case removeFavoritePrimeTapped
-}
-
-enum FavoritePrimesAction {
-    case deleteFavoritePrimes(IndexSet)
-}
-
 
 enum AppAction {
     case counter(CounterAction)
     case primeModal(PrimeModelAction)
     case favoritePrimes(FavoritePrimesAction)
     
-   public var counter: CounterAction? {
+    public var counter: CounterAction? {
         get {
             guard case let .counter(value) = self else { return nil }
             return value
         }
-       
-       set {
-           guard case .counter = self, let newValue = newValue else { return }
-           self = .counter(newValue)
-         }
+        
+        set {
+            guard case .counter = self, let newValue = newValue else { return }
+            self = .counter(newValue)
+        }
     }
     public var primeModal: PrimeModelAction? {
         get {
@@ -123,7 +105,7 @@ enum AppAction {
         set {
             guard case .primeModal = self, let newValue = newValue else { return }
             self = .primeModal(newValue)
-          }
+        }
     }
     public var favoritePrimes: FavoritePrimesAction? {
         get {
@@ -134,159 +116,16 @@ enum AppAction {
         set {
             guard case .favoritePrimes = self, let newValue = newValue else { return }
             self = .favoritePrimes(newValue)
-          }
+        }
     }
 }
 
 let someAction = AppAction.counter(.incrTapped)
-
-
-func pullback<Value, LocalAction, GlobalAction>(
-    _ reducer: @escaping (inout Value, LocalAction) -> Void,
-    action: WritableKeyPath<GlobalAction, LocalAction?>
-) -> (inout Value, GlobalAction) -> Void {
-    return { value, globalAction in
-        guard let localAction = globalAction[keyPath: action] else { return }
-        reducer(&value, localAction)
-        
-    }
-}
-
-
-func counterReducer(state: inout Int, action: CounterAction) {
-    switch action {
-    case .incrTapped:
-        state += 1
-    case .decrTapped:
-        state -= 1
-//    default:
-//        break
-    }
-}
-struct EnumKeyPath<Root, Value> {
-    let embed: (Value) -> Root
-    let extract: (inout Root, Value) -> Void
-}
-
-func primeModalReducer(state: inout AppState, action: PrimeModelAction) {
-    
-    switch action {
-    case .saveFavoritePrimeTapped:
-        state.favoritePrimes.append(state.count)
-        state.activityFeed.append(AppState.Activity.init(timestamp: Date(), type: .addedFavoritePrime(state.count)))
-        
-    case .removeFavoritePrimeTapped:
-        state.favoritePrimes.removeAll(where: {$0 == state.count})
-        state.activityFeed.append(AppState.Activity.init(timestamp: Date(), type: .removeFavoritePrime(state.count)))
-        
-    default:
-        break
-    }
-}
-
-
-func favoritePrimesReducer(state: inout FavoritePrimesState, action: FavoritePrimesAction) {
-    switch action {
-    case let .deleteFavoritePrimes(indexSet):
-        for index in indexSet {
-            let prime = state.favoritePrimes[index]
-            state.favoritePrimes.remove(at: index)
-            state.activityFeed.append(AppState.Activity.init(timestamp: Date(), type: .removeFavoritePrime(prime)))
-            
-        }
-        
-
-    }
-    
-}
-
-struct FavoritePrimesState {
-    
-    var favoritePrimes: [Int]
-    var activityFeed: [AppState.Activity]
-}
-
-//
-//func appReducer(state: inout AppState, action: AppAction) {
-////    var copy = state
-//    switch action {
-//
-//    }
-//}
-
-func combine<Value, Action>(
-    _ first: @escaping (inout Value, Action) -> Void,
-    _ second: @escaping (inout Value, Action) -> Void) -> (inout Value, Action) -> Void {
-        
-        return { value, action in
-            
-            first(&value,action)
-            second(&value,action)
-        }
-        
-}
-
-func combine<Value, Action>(
-    _ reducers: (inout Value, Action) -> Void...) -> (inout Value, Action) -> Void {
-        
-        return { value, action in
-            
-            for reducer in reducers {
-                reducer(&value, action)
-            }
-        }
-        
-}
-
-func pullback<LocalValue, GlobalValue, LocalAction, GlobalAction>(
-    _ reducer: @escaping (inout LocalValue, LocalAction) -> Void,
-    value: WritableKeyPath<GlobalValue, LocalValue>,
-    action: WritableKeyPath<GlobalAction, LocalAction?>
-//    _ get: @escaping (GlobalValue) -> LocalValue,
-//    _ set: @escaping (inout GlobalValue, LocalValue) -> Void
-) -> (inout GlobalValue, GlobalAction) -> Void {
-      
-    
-    return { globalValue, globalAction in
-        guard let localAction = globalAction[keyPath: action] else { return }
-    //    reducer(&value, localAction)
-      reducer(&globalValue[keyPath: value], localAction)
-        
-    }
-}
-
-func pullback2<GlobalValue, Action>(
-
-) -> (inout GlobalValue, Action) -> Void {
-      
-    
-    return { globalValue, action in
-      
-    }
-  
-}
-
-//func pullback<LocalValue, GlobalValue, Action>(
-//    _ reducer: @escaping (inout LocalValue, Action) -> Void,
-//    _ get: @escaping (GlobalValue) -> LocalValue,
-//    _ set: @escaping (inout GlobalValue, LocalValue) -> Void
-//) -> (inout GlobalValue, Action) -> Void {
-//
-//
-//    return { globalValue, action in
-//        var localValue = get(globalValue)
-//        reducer(&localValue, action)
-//        set(&globalValue, localValue)
-//
-//    }
-//}
-
-
-
+typealias CounterViewState = (count: Int, favoritePrimes: [Int])
 struct CounterView: View {
     @State private var isPrimeModalShown: Bool = false
     @State private var isPrimeAlertShown: Bool = false
-    @StateObject var store: Store<AppState, AppAction>
+    @StateObject var store: Store<CounterViewState, AppAction>
     @State var alertNthPrime: Int?
     @State var isNthPrimeButtonDisabled: Bool = false
     
@@ -297,17 +136,12 @@ struct CounterView: View {
                 
                 Button("-") {
                     self.store.send(.counter(.decrTapped))
-               //     self.store.value = counterReducer(state: store.value, action: .decrTapped)
-//                    self.store.value.count -= 1
                 }
                 
                 Text("\(self.store.value.count)")
                 
                 Button("+") {
                     self.store.send(.counter(.incrTapped))
-                  //  self.store.value = counterReducer(state: store.value, action: .incrTapped)
-                     //self.store.value.count += 1
-                    
                 }
                 
             }
@@ -324,14 +158,13 @@ struct CounterView: View {
         .navigationTitle("Counter demo")
         
         .popover(isPresented: $isPrimeModalShown) {
-            IsPrimeModalView(store: store)
-        
+            IsPrimeModalView(store: self.store.view { ($0.count, $0.favoritePrimes)})
+            
         }
         .alert("the prime\(self.store.value.count) prime is \(alertNthPrime ?? 0)", isPresented: $isPrimeAlertShown, presenting: alertNthPrime) { nthPrime in
             
             Button("OK", role: .cancel, action: {})
         }
-    
     }
     
     func nthPrimeButtonAction() {
@@ -346,7 +179,7 @@ struct CounterView: View {
 
 struct IsPrimeModalView: View {
     
-    @StateObject var store: Store<AppState, AppAction>
+    @StateObject var store: Store<PrimeModalState, AppAction>
     
     
     var body: some View {
@@ -372,50 +205,35 @@ struct IsPrimeModalView: View {
             } else {
                 Text("\(self.store.value.count) is not prime : (")
             }
-          
-            
         }
     }
     
     private func isPrime (_ p: Int) -> Bool {
-      if p <= 1 { return false }
-      if p <= 3 { return true }
-      for i in 2...Int(sqrtf(Float(p))) {
-        if p % i == 0 { return false }
-      }
-      return true
+        if p <= 1 { return false }
+        if p <= 3 { return true }
+        for i in 2...Int(sqrtf(Float(p))) {
+            if p % i == 0 { return false }
+        }
+        return true
     }
 }
 
 
-struct CounterView_Previews: PreviewProvider {
-//   static let appReducer = combine(combine(counterReducer(state:action:), primeModalReducer(state:action:)), favoritePrimesReducer(state:action:))
-    static  let _appReducer: (inout AppState, AppAction) -> Void = combine(
-    //pullback(counterReducer, value: \AppState.count, action: \AppAction.counter),
-    //  pullback(primeModalReducer, value: \.self, action: \.primeModal),
-      pullback(favoritePrimesReducer, value: \.favoritePrimesState, action: \.favoritePrimes)
-    )
-    
-    
-    
-    static var previews: some View {
-        CounterView(
-            store: Store(initialValue: AppState(), reducer: _appReducer
-            )
-        )
-        
-    }
-}
+//struct CounterView_Previews: PreviewProvider {
+//
+//    static var previews: some View {
+//        CounterView(
+//            store: Store(initialValue: AppState(), reducer: appReducer
+//                        )
+//        )
+//    }
+//}
 
 private func ordinal(_ n: Int) -> String {
-  let formatter = NumberFormatter()
-  formatter.numberStyle = .ordinal
-  return formatter.string(for: n) ?? ""
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .ordinal
+    return formatter.string(for: n) ?? ""
 }
-
-
-
-
 
 public let wolframAlphaApiKey = "6H69Q3-828TKQJ4EP"
 func wolframAlpha(query: String, callback: @escaping (WolframAlphaResult?) -> Void) -> Void {
@@ -434,9 +252,6 @@ func wolframAlpha(query: String, callback: @escaping (WolframAlphaResult?) -> Vo
         
     }
     .resume()
-    
-    
-    
 }
 
 
@@ -458,3 +273,63 @@ func nthPrime(_ n: Int, callback: @escaping (Int?) -> Void) -> Void {
         )
     }
 }
+
+
+func filterActions<Value, Action>(_ predicate: @escaping (Action) -> Bool)
+-> (@escaping (inout Value, Action) -> Void)
+-> (inout Value, Action) -> Void {
+    
+    return { reducer in
+        return { value, action in
+            if predicate(action) {
+                reducer(&value,action)
+            }
+        }
+    }
+}
+
+struct UndoState<Value> {
+    var value: Value
+    var history: [Value]
+    var canUndo: Bool { !self.history.isEmpty }
+    var undone: [Value]
+    var canRedo: Bool { !self.undone.isEmpty }
+}
+
+enum UndoAction<Action> {
+    case action(Action)
+    case undo
+    case redo
+}
+
+
+func undo<Value, Action>(
+    _ reducer: @escaping (inout Value, Action) -> Void, limit: Int) -> (inout UndoState<Value>, UndoAction<Action>) -> Void {
+        
+        return { undoState, undAction in
+            
+            switch undAction {
+                
+            case let .action(action):
+                var currentValue = undoState.value
+                
+                reducer(&currentValue, action)
+                undoState.history.append(currentValue)
+                
+                if undoState.history.count > limit {
+                    undoState.history.removeFirst()
+                }
+                
+            case .undo:
+                guard undoState.canUndo else { return }
+                undoState.undone.append(undoState.value)
+                undoState.value = undoState.history.removeLast()
+                
+            case .redo:
+                guard undoState.canRedo else { return }
+                undoState.history.append(undoState.value)
+                undoState.value = undoState.undone.removeLast()
+                
+        }
+    }
+} 

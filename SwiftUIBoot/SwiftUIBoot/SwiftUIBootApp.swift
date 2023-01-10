@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct SwiftUIBootApp: App {
@@ -13,10 +14,7 @@ struct SwiftUIBootApp: App {
     var body: some Scene {
         WindowGroup {
             PrimeNumberView(
-                store: Store(initialValue: AppState(), reducer:  combine(
-                    pullback(counterReducer(state:action:), value: \.count, action: \.counter) ,
-                    pullback(primeModalReducer(state:action:), action: \.primeModal) ,
-                    pullback(favoritePrimesReducer(state:action:), value: \.favoritePrimesState, action: \.favoritePrimes))
+                store: Store(initialValue: AppState(), reducer:  logging(activityFeed(appReducer))  
                 )
                 )
         }
