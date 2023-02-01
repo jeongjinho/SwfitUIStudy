@@ -10,6 +10,7 @@ import ComposableArchitecture
 import FavoritePrimes
 import Counter
 import PrimeModal
+
 // (A) -> A
 // (inout A) -> Void
 
@@ -18,6 +19,8 @@ import PrimeModal
 
 //(Value, Action) -> Value
 //(inout Value, Action) -> Void
+
+
 
 
 struct AppState {
@@ -55,6 +58,17 @@ extension AppState {
             self.favoritePrimes = newValue.favoritePrimes
         }
     }
+    
+    var counterView: CounterViewState {
+        get {
+            CounterViewState(count: self.count, favoritePrimes: self.favoritePrimes)
+        }
+        
+        set {
+            self.count = newValue.count
+            self.favoritePrimes = newValue.favoritePrimes
+        }
+    }
 }
 
 extension AppState {
@@ -81,32 +95,23 @@ extension AppState {
 }
 
 enum AppAction {
-    case counter(CounterAction)
-    case primeModal(PrimeModelAction)
+    case counterView(CounterViewAction)
+//    case counter(CounterAction)
+//    case primeModal(PrimeModelAction)
     case favoritePrimes(FavoritePrimesAction)
     
-    public var counter: CounterAction? {
+    public var counterView: CounterViewAction? {
         get {
-            guard case let .counter(value) = self else { return nil }
+            guard case let .counterView(value) = self else { return nil }
             return value
         }
         
         set {
-            guard case .counter = self, let newValue = newValue else { return }
-            self = .counter(newValue)
+            guard case .counterView = self, let newValue = newValue else { return }
+            self = .counterView(newValue)
         }
     }
-    public var primeModal: PrimeModelAction? {
-        get {
-            guard case let .primeModal(value) = self else { return nil }
-            return value
-        }
-        
-        set {
-            guard case .primeModal = self, let newValue = newValue else { return }
-            self = .primeModal(newValue)
-        }
-    }
+    
     public var favoritePrimes: FavoritePrimesAction? {
         get {
             guard case let .favoritePrimes(value) = self else { return nil }
@@ -120,159 +125,9 @@ enum AppAction {
     }
 }
 
-let someAction = AppAction.counter(.incrTapped)
-typealias CounterViewState = (count: Int, favoritePrimes: [Int])
-struct CounterView: View {
-    @State private var isPrimeModalShown: Bool = false
-    @State private var isPrimeAlertShown: Bool = false
-    @StateObject var store: Store<CounterViewState, AppAction>
-    @State var alertNthPrime: Int?
-    @State var isNthPrimeButtonDisabled: Bool = false
-    
-    var body: some View {
-        VStack {
-            
-            HStack {
-                
-                Button("-") {
-                    self.store.send(.counter(.decrTapped))
-                }
-                
-                Text("\(self.store.value.count)")
-                
-                Button("+") {
-                    self.store.send(.counter(.incrTapped))
-                }
-                
-            }
-            Button("Is this prime?") {
-                isPrimeModalShown.toggle()
-            }
-            
-            Button("What's the \(ordinal(self.store.value.count)) prime?") {
-                nthPrimeButtonAction()
-            }
-            .disabled(isNthPrimeButtonDisabled)
-        }
-        .font(.title)
-        .navigationTitle("Counter demo")
-        
-        .popover(isPresented: $isPrimeModalShown) {
-            IsPrimeModalView(store: self.store.view { ($0.count, $0.favoritePrimes)})
-            
-        }
-        .alert("the prime\(self.store.value.count) prime is \(alertNthPrime ?? 0)", isPresented: $isPrimeAlertShown, presenting: alertNthPrime) { nthPrime in
-            
-            Button("OK", role: .cancel, action: {})
-        }
-    }
-    
-    func nthPrimeButtonAction() {
-        isNthPrimeButtonDisabled = true
-        nthPrime(self.store.value.count) { prime in
-            self.alertNthPrime = prime
-            self.isPrimeAlertShown = true
-            self.isNthPrimeButtonDisabled = false
-        }
-    }
-}
-
-struct IsPrimeModalView: View {
-    
-    @StateObject var store: Store<PrimeModalState, AppAction>
-    
-    
-    var body: some View {
-        VStack {
-            
-            if isPrime(self.store.value.count) {
-                Text("\(self.store.value.count) is prime!! ❤️‍🔥")
-                if self.store.value.favoritePrimes.contains(self.store.value.count) {
-                    Button {
-                        self.store.send(.primeModal(.removeFavoritePrimeTapped))
-                        
-                    } label: {
-                        Text("Remove from favorite primes")
-                    }
-                } else {
-                    Button {
-                        self.store.send(.primeModal(.saveFavoritePrimeTapped))
-                    } label: {
-                        Text("Save to favorite primes")
-                    }
-                }
-                
-            } else {
-                Text("\(self.store.value.count) is not prime : (")
-            }
-        }
-    }
-    
-    private func isPrime (_ p: Int) -> Bool {
-        if p <= 1 { return false }
-        if p <= 3 { return true }
-        for i in 2...Int(sqrtf(Float(p))) {
-            if p % i == 0 { return false }
-        }
-        return true
-    }
-}
+//let someAction = AppAction.counter(.incrTapped)
 
 
-//struct CounterView_Previews: PreviewProvider {
-//
-//    static var previews: some View {
-//        CounterView(
-//            store: Store(initialValue: AppState(), reducer: appReducer
-//                        )
-//        )
-//    }
-//}
-
-private func ordinal(_ n: Int) -> String {
-    let formatter = NumberFormatter()
-    formatter.numberStyle = .ordinal
-    return formatter.string(for: n) ?? ""
-}
-
-public let wolframAlphaApiKey = "6H69Q3-828TKQJ4EP"
-func wolframAlpha(query: String, callback: @escaping (WolframAlphaResult?) -> Void) -> Void {
-    var components = URLComponents(string: "https://api.wolframalpha.com/v2/query")!
-    components.queryItems = [
-        URLQueryItem(name: "input", value: query),
-        URLQueryItem(name: "format", value: "plaintext"),
-        URLQueryItem(name: "output", value: "JSON"),
-        URLQueryItem(name: "appid", value: wolframAlphaApiKey)
-    ]
-    
-    URLSession.shared.dataTask(with: components.url(relativeTo: nil)!) { data, response, error in
-        callback(
-            data.flatMap{ try? JSONDecoder().decode(WolframAlphaResult.self, from: $0)}
-        )
-        
-    }
-    .resume()
-}
-
-
-func nthPrime(_ n: Int, callback: @escaping (Int?) -> Void) -> Void {
-    
-    wolframAlpha(query: "prime \(n)") { result in
-        
-        callback(
-            result
-                .flatMap {
-                    $0.queryresult
-                        .pods
-                        .first(where: { $0.primary == .some(true)})?
-                        .subpods
-                        .first?
-                        .plaintext
-                }
-                .flatMap(Int.init)
-        )
-    }
-}
 
 
 func filterActions<Value, Action>(_ predicate: @escaping (Action) -> Bool)

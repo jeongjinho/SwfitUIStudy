@@ -13,10 +13,11 @@ struct SwiftUIBootApp: App {
 //    let appReducer = combine(combine(counterReducer(state:action:), primeModalReducer(state:action:)), favoritePrimesReducer(state:action:))
     var body: some Scene {
         WindowGroup {
-            PrimeNumberView(
-                store: Store(initialValue: AppState(), reducer:  logging(activityFeed(appReducer))  
-                )
-                )
+//            PrimeNumberView(
+//                store: Store(initialValue: AppState(), reducer:  logging(activityFeed(appReducer))
+//                )
+//                )
+            TabBar()
         }
     }
 }

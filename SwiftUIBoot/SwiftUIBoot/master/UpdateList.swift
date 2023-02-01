@@ -8,43 +8,76 @@
 import SwiftUI
 
 struct UpdateList: View {
+    @StateObject var store = UpdateStore()
+    
+    
+    func addUpdate() {
+        store.updates.append(Update(image: "Card1", title: "New Item", text: "text", date: "Jan 1"))
+    }
     
     var body: some View {
         
         NavigationView {
             
-            List(updateData) { update in
-                NavigationLink {
-                    Text(update.text)
-                } label: {
-                    HStack {
-                        Image(update.image)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 80, height: 80)
-                            .background(Color.black)
-                            .cornerRadius(20)
-                            .padding(.trailing, 4)
-                        
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text(update.title)
-                                .font(.system(size: 20, weight: .bold))
-                            Text(update.text)
-                                .lineLimit(2)
-                                .font(.subheadline)
-                                .foregroundColor(Color.gray)
+            List {
+                ForEach(store.updates) { update in
+                    NavigationLink {
+                        UpdateDetail(update: update)
+                    } label: {
+                        HStack {
+                            Image(update.image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 80, height: 80)
+                                .background(Color.black)
+                                .cornerRadius(20)
+                                .padding(.trailing, 4)
                             
-                            Text(update.date)
-                                .font(.caption)
-                                .fontWeight(.bold)
-                                .foregroundColor(.secondary)
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text(update.title)
+                                    .font(.system(size: 20, weight: .bold))
+                                Text(update.text)
+                                    .lineLimit(2)
+                                    .font(.subheadline)
+                                    .foregroundColor(Color.gray)
+                                
+                                Text(update.date)
+                                    .font(.caption)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.secondary)
+                            }
                         }
-                    }
-                    .padding(.vertical, 8)
+                        .padding(.vertical, 8)
+                }
+                }
+                .onDelete { indexSet in
+                    self.store.updates.remove(at: indexSet.first!)
+                }
+                .onMove { source, destination in
+                    self.store.updates.move(fromOffsets: source, toOffset: destination)
                 }
             }
+            
             .listStyle(.plain)
             .navigationBarTitle(Text("Updates"))
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        addUpdate()
+                    } label: {
+                        Text("Add Update")
+                    }
+                    
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                   EditButton()
+                    
+                }
+                
+            }
+            
+            
             
         }
         
@@ -56,7 +89,7 @@ struct UpdateList_Previews: PreviewProvider {
         UpdateList()
     }
 }
-    
+
 
 struct Update: Identifiable {
     var id = UUID()

@@ -36,15 +36,18 @@ public final class Store<Value, Action>: ObservableObject {
         
     }
     
-    public func view<LocalValue>(_ f: @escaping (Value) -> LocalValue) -> Store <LocalValue, Action> {
-        let localStore = Store<LocalValue, Action>(initialValue: f(self.value)) { localValue, action in
-            self.send(action)
-            let updatedLocalValue = f(self.value)
+    public func view<LocalValue, LocalAction>(
+        value toLocalValue: @escaping (Value) -> LocalValue,
+        action toGlobalAction: @escaping (LocalAction) -> Action) -> Store <LocalValue, LocalAction> {
+        let localStore = Store<LocalValue, LocalAction>(
+            initialValue: toLocalValue(self.value)) { localValue, localAction in
+            self.send(toGlobalAction(localAction))
+            let updatedLocalValue = toLocalValue(self.value)
             localValue = updatedLocalValue
         }
         
         self.$value.sink { [weak localStore] newValue in
-            localStore?.value = f(newValue)
+            localStore?.value = toLocalValue(newValue)
         }
         .store(in: &localStore.cancellables)
         return localStore

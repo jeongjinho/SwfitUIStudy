@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E9083C8B2978CAD7005E5E27 /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9083C8A2978CAD7005E5E27 /* RingView.swift */; };
 		E90C1AED296BA510000B6013 /* UpdateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C1AEC296BA510000B6013 /* UpdateList.swift */; };
 		E918E0FA28F8F9EA0041C649 /* ViewModifierBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E918E0F928F8F9EA0041C649 /* ViewModifierBootcamp.swift */; };
 		E92C825A29488ADE001C0C18 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92C825929488ADE001C0C18 /* CounterView.swift */; };
-		E92C82A8294AE9CA001C0C18 /* WolframAlphaResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92C82A7294AE9CA001C0C18 /* WolframAlphaResult.swift */; };
 		E92C82AA294AF43C001C0C18 /* FavoritePrimesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92C82A9294AF43C001C0C18 /* FavoritePrimesView.swift */; };
 		E95F51B529222D3D003B9DA9 /* PreferencKeyBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F51B429222D3D003B9DA9 /* PreferencKeyBootcamp.swift */; };
 		E95F51B82922560A003B9DA9 /* GeometryPreferenceKeyBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F51B72922560A003B9DA9 /* GeometryPreferenceKeyBootcamp.swift */; };
@@ -20,6 +20,12 @@
 		E980EF03291B30F600CB2DD4 /* ViewBuilderBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E980EF02291B30F600CB2DD4 /* ViewBuilderBootcamp.swift */; };
 		E980EF05291BD26000CB2DD4 /* CheckContinuationBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E980EF04291BD26000CB2DD4 /* CheckContinuationBootcamp.swift */; };
 		E98544D029153AC800596E5B /* TaskGroupBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98544CF29153AC800596E5B /* TaskGroupBootcamp.swift */; };
+		E98E8E6E296CE76A00E35281 /* UpdateDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E8E6D296CE76A00E35281 /* UpdateDetail.swift */; };
+		E98E8E70296CE9E900E35281 /* UpdateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E8E6F296CE9E900E35281 /* UpdateStore.swift */; };
+		E98E8E72296CEF0B00E35281 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E8E71296CEF0B00E35281 /* TabBar.swift */; };
+		E98E8E74296D0DF100E35281 /* PrimeModal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E4E2E629650D9900423ACD /* PrimeModal.framework */; };
+		E98E8E75296D0DF100E35281 /* PrimeModal.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E9E4E2E629650D9900423ACD /* PrimeModal.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E98E8E79296D0E5A00E35281 /* WolframAlphaResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92C82A7294AE9CA001C0C18 /* WolframAlphaResult.swift */; };
 		E99B48D8290A942C0097F4C0 /* AnyTransitionBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99B48D7290A942C0097F4C0 /* AnyTransitionBootcamp.swift */; };
 		E99B48DB290A9C450097F4C0 /* AsyncAwaitBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99B48DA290A9C450097F4C0 /* AsyncAwaitBootcamp.swift */; };
 		E99B48DE290F4A580097F4C0 /* MatchedGeometryBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99B48DD290F4A580097F4C0 /* MatchedGeometryBootcamp.swift */; };
@@ -75,11 +81,37 @@
 		E9EC6F0F28D00BC300814B02 /* FileManagerBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC6F0E28D00BC300814B02 /* FileManagerBootcamp.swift */; };
 		E9EC98EE292B028B00F610D2 /* AppTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC98ED292B028B00F610D2 /* AppTabBarView.swift */; };
 		E9EC98F0292B1B3E00F610D2 /* StructClassActorBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC98EF292B1B3E00F610D2 /* StructClassActorBootcamp.swift */; };
+		E9F318752988B7C8002FC92B /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F318742988B7C8002FC92B /* Modifiers.swift */; };
+		E9F318892988BD3A002FC92B /* WorkSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9F318772988BD3A002FC92B /* WorkSans-Regular.ttf */; };
+		E9F3188A2988BD3A002FC92B /* WorkSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9F318782988BD3A002FC92B /* WorkSans-Light.ttf */; };
+		E9F3188B2988BD3A002FC92B /* WorkSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9F318792988BD3A002FC92B /* WorkSans-ExtraBold.ttf */; };
+		E9F3188C2988BD3A002FC92B /* WorkSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9F3187A2988BD3A002FC92B /* WorkSans-SemiBoldItalic.ttf */; };
+		E9F3188D2988BD3A002FC92B /* WorkSans-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9F3187B2988BD3A002FC92B /* WorkSans-MediumItalic.ttf */; };
+		E9F3188E2988BD3A002FC92B /* WorkSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9F3187C2988BD3A002FC92B /* WorkSans-BoldItalic.ttf */; };
+		E9F3188F2988BD3A002FC92B /* WorkSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9F3187D2988BD3A002FC92B /* WorkSans-ExtraLight.ttf */; };
+		E9F318902988BD3A002FC92B /* WorkSans-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9F3187E2988BD3A002FC92B /* WorkSans-ThinItalic.ttf */; };
+		E9F318912988BD3A002FC92B /* WorkSans-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9F3187F2988BD3A002FC92B /* WorkSans-ExtraLightItalic.ttf */; };
+		E9F318922988BD3A002FC92B /* WorkSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9F318802988BD3A002FC92B /* WorkSans-Medium.ttf */; };
+		E9F318932988BD3A002FC92B /* WorkSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9F318812988BD3A002FC92B /* WorkSans-SemiBold.ttf */; };
+		E9F318942988BD3A002FC92B /* WorkSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9F318822988BD3A002FC92B /* WorkSans-Italic.ttf */; };
+		E9F318952988BD3A002FC92B /* WorkSans-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9F318832988BD3A002FC92B /* WorkSans-BlackItalic.ttf */; };
+		E9F318962988BD3A002FC92B /* WorkSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9F318842988BD3A002FC92B /* WorkSans-Thin.ttf */; };
+		E9F318972988BD3A002FC92B /* WorkSans-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9F318852988BD3A002FC92B /* WorkSans-Black.ttf */; };
+		E9F318982988BD3A002FC92B /* WorkSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9F318862988BD3A002FC92B /* WorkSans-LightItalic.ttf */; };
+		E9F318992988BD3A002FC92B /* WorkSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9F318872988BD3A002FC92B /* WorkSans-ExtraBoldItalic.ttf */; };
+		E9F3189A2988BD3A002FC92B /* WorkSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9F318882988BD3A002FC92B /* WorkSans-Bold.ttf */; };
 		E9FB62422946AFBE00731FF4 /* LayoutAndStacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB62412946AFBE00731FF4 /* LayoutAndStacks.swift */; };
 		E9FB62452946C79500731FF4 /* PrimeNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB62442946C79500731FF4 /* PrimeNumberView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E98E8E76296D0DF100E35281 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E9B4C95A28BDA05C0060C5FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E9E4E2E529650D9900423ACD;
+			remoteInfo = PrimeModal;
+		};
 		E9B4C97328BDA05C0060C5FE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E9B4C95A28BDA05C0060C5FE /* Project object */;
@@ -181,6 +213,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		E98E8E78296D0DF100E35281 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E98E8E75296D0DF100E35281 /* PrimeModal.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E9E4E2DD29650D6E00423ACD /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -198,6 +241,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E9083C8A2978CAD7005E5E27 /* RingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingView.swift; sourceTree = "<group>"; };
 		E90C1AEC296BA510000B6013 /* UpdateList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateList.swift; sourceTree = "<group>"; };
 		E918E0F928F8F9EA0041C649 /* ViewModifierBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifierBootcamp.swift; sourceTree = "<group>"; };
 		E92C825929488ADE001C0C18 /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
@@ -211,6 +255,9 @@
 		E980EF02291B30F600CB2DD4 /* ViewBuilderBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBuilderBootcamp.swift; sourceTree = "<group>"; };
 		E980EF04291BD26000CB2DD4 /* CheckContinuationBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckContinuationBootcamp.swift; sourceTree = "<group>"; };
 		E98544CF29153AC800596E5B /* TaskGroupBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskGroupBootcamp.swift; sourceTree = "<group>"; };
+		E98E8E6D296CE76A00E35281 /* UpdateDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDetail.swift; sourceTree = "<group>"; };
+		E98E8E6F296CE9E900E35281 /* UpdateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStore.swift; sourceTree = "<group>"; };
+		E98E8E71296CEF0B00E35281 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		E99B48D7290A942C0097F4C0 /* AnyTransitionBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTransitionBootcamp.swift; sourceTree = "<group>"; };
 		E99B48DA290A9C450097F4C0 /* AsyncAwaitBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncAwaitBootcamp.swift; sourceTree = "<group>"; };
 		E99B48DD290F4A580097F4C0 /* MatchedGeometryBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedGeometryBootcamp.swift; sourceTree = "<group>"; };
@@ -265,6 +312,25 @@
 		E9EC6F0E28D00BC300814B02 /* FileManagerBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerBootcamp.swift; sourceTree = "<group>"; };
 		E9EC98ED292B028B00F610D2 /* AppTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarView.swift; sourceTree = "<group>"; };
 		E9EC98EF292B1B3E00F610D2 /* StructClassActorBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructClassActorBootcamp.swift; sourceTree = "<group>"; };
+		E9F318742988B7C8002FC92B /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
+		E9F318772988BD3A002FC92B /* WorkSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Regular.ttf"; sourceTree = "<group>"; };
+		E9F318782988BD3A002FC92B /* WorkSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Light.ttf"; sourceTree = "<group>"; };
+		E9F318792988BD3A002FC92B /* WorkSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		E9F3187A2988BD3A002FC92B /* WorkSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		E9F3187B2988BD3A002FC92B /* WorkSans-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-MediumItalic.ttf"; sourceTree = "<group>"; };
+		E9F3187C2988BD3A002FC92B /* WorkSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		E9F3187D2988BD3A002FC92B /* WorkSans-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-ExtraLight.ttf"; sourceTree = "<group>"; };
+		E9F3187E2988BD3A002FC92B /* WorkSans-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-ThinItalic.ttf"; sourceTree = "<group>"; };
+		E9F3187F2988BD3A002FC92B /* WorkSans-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		E9F318802988BD3A002FC92B /* WorkSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Medium.ttf"; sourceTree = "<group>"; };
+		E9F318812988BD3A002FC92B /* WorkSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		E9F318822988BD3A002FC92B /* WorkSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Italic.ttf"; sourceTree = "<group>"; };
+		E9F318832988BD3A002FC92B /* WorkSans-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-BlackItalic.ttf"; sourceTree = "<group>"; };
+		E9F318842988BD3A002FC92B /* WorkSans-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Thin.ttf"; sourceTree = "<group>"; };
+		E9F318852988BD3A002FC92B /* WorkSans-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Black.ttf"; sourceTree = "<group>"; };
+		E9F318862988BD3A002FC92B /* WorkSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		E9F318872988BD3A002FC92B /* WorkSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		E9F318882988BD3A002FC92B /* WorkSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Bold.ttf"; sourceTree = "<group>"; };
 		E9FB62412946AFBE00731FF4 /* LayoutAndStacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutAndStacks.swift; sourceTree = "<group>"; };
 		E9FB62442946C79500731FF4 /* PrimeNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeNumberView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -299,6 +365,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E98E8E74296D0DF100E35281 /* PrimeModal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +435,13 @@
 			path = PreferenceKey;
 			sourceTree = "<group>";
 		};
+		E98E8E73296D0DF100E35281 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E99B48D9290A9C2D0097F4C0 /* Concurrency */ = {
 			isa = PBXGroup;
 			children = (
@@ -398,10 +472,15 @@
 				E980EF02291B30F600CB2DD4 /* ViewBuilderBootcamp.swift */,
 				E95F51B6292255C7003B9DA9 /* PreferenceKey */,
 				E9FB62412946AFBE00731FF4 /* LayoutAndStacks.swift */,
+				E9083C8A2978CAD7005E5E27 /* RingView.swift */,
+				E9F318742988B7C8002FC92B /* Modifiers.swift */,
 				E9CD9E8A2950478200051925 /* MenuView.swift */,
 				E964772D29627448004C740A /* Home.swift */,
 				E9E4E2BE2963C0A700423ACD /* HomeView.swift */,
 				E90C1AEC296BA510000B6013 /* UpdateList.swift */,
+				E98E8E6D296CE76A00E35281 /* UpdateDetail.swift */,
+				E98E8E6F296CE9E900E35281 /* UpdateStore.swift */,
+				E98E8E71296CEF0B00E35281 /* TabBar.swift */,
 			);
 			path = master;
 			sourceTree = "<group>";
@@ -421,6 +500,7 @@
 				E9E4E32729650DF700423ACD /* ComposableArchitecture */,
 				E9E4E33329650DF800423ACD /* ComposableArchitectureTests */,
 				E9B4C96328BDA05C0060C5FE /* Products */,
+				E98E8E73296D0DF100E35281 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -452,6 +532,7 @@
 				E99B48DC290F4A380097F4C0 /* master */,
 				E9FB62432946C77A00731FF4 /* TCA */,
 				E9B4C96928BDA05C0060C5FE /* Assets.xcassets */,
+				E9F318762988BD3A002FC92B /* static */,
 				E9B4C96B28BDA05C0060C5FE /* Preview Content */,
 			);
 			path = SwiftUIBoot;
@@ -534,6 +615,7 @@
 			isa = PBXGroup;
 			children = (
 				E9E4E2C729650D6D00423ACD /* Counter.h */,
+				E92C82A7294AE9CA001C0C18 /* WolframAlphaResult.swift */,
 				E9E4E3452965112E00423ACD /* Counter.swift */,
 			);
 			path = Counter;
@@ -606,13 +688,37 @@
 			path = CustomTabBar;
 			sourceTree = "<group>";
 		};
+		E9F318762988BD3A002FC92B /* static */ = {
+			isa = PBXGroup;
+			children = (
+				E9F318772988BD3A002FC92B /* WorkSans-Regular.ttf */,
+				E9F318782988BD3A002FC92B /* WorkSans-Light.ttf */,
+				E9F318792988BD3A002FC92B /* WorkSans-ExtraBold.ttf */,
+				E9F3187A2988BD3A002FC92B /* WorkSans-SemiBoldItalic.ttf */,
+				E9F3187B2988BD3A002FC92B /* WorkSans-MediumItalic.ttf */,
+				E9F3187C2988BD3A002FC92B /* WorkSans-BoldItalic.ttf */,
+				E9F3187D2988BD3A002FC92B /* WorkSans-ExtraLight.ttf */,
+				E9F3187E2988BD3A002FC92B /* WorkSans-ThinItalic.ttf */,
+				E9F3187F2988BD3A002FC92B /* WorkSans-ExtraLightItalic.ttf */,
+				E9F318802988BD3A002FC92B /* WorkSans-Medium.ttf */,
+				E9F318812988BD3A002FC92B /* WorkSans-SemiBold.ttf */,
+				E9F318822988BD3A002FC92B /* WorkSans-Italic.ttf */,
+				E9F318832988BD3A002FC92B /* WorkSans-BlackItalic.ttf */,
+				E9F318842988BD3A002FC92B /* WorkSans-Thin.ttf */,
+				E9F318852988BD3A002FC92B /* WorkSans-Black.ttf */,
+				E9F318862988BD3A002FC92B /* WorkSans-LightItalic.ttf */,
+				E9F318872988BD3A002FC92B /* WorkSans-ExtraBoldItalic.ttf */,
+				E9F318882988BD3A002FC92B /* WorkSans-Bold.ttf */,
+			);
+			path = static;
+			sourceTree = "<group>";
+		};
 		E9FB62432946C77A00731FF4 /* TCA */ = {
 			isa = PBXGroup;
 			children = (
 				E9FB62442946C79500731FF4 /* PrimeNumberView.swift */,
 				E92C825929488ADE001C0C18 /* CounterView.swift */,
 				E92C82A9294AF43C001C0C18 /* FavoritePrimesView.swift */,
-				E92C82A7294AE9CA001C0C18 /* WolframAlphaResult.swift */,
 			);
 			path = TCA;
 			sourceTree = "<group>";
@@ -724,10 +830,12 @@
 				E9E4E2C129650D6D00423ACD /* Sources */,
 				E9E4E2C229650D6D00423ACD /* Frameworks */,
 				E9E4E2C329650D6D00423ACD /* Resources */,
+				E98E8E78296D0DF100E35281 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E98E8E77296D0DF100E35281 /* PBXTargetDependency */,
 			);
 			name = Counter;
 			productName = Counter;
@@ -954,8 +1062,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9F318892988BD3A002FC92B /* WorkSans-Regular.ttf in Resources */,
+				E9F318922988BD3A002FC92B /* WorkSans-Medium.ttf in Resources */,
+				E9F3188D2988BD3A002FC92B /* WorkSans-MediumItalic.ttf in Resources */,
+				E9F318982988BD3A002FC92B /* WorkSans-LightItalic.ttf in Resources */,
+				E9F318912988BD3A002FC92B /* WorkSans-ExtraLightItalic.ttf in Resources */,
+				E9F318942988BD3A002FC92B /* WorkSans-Italic.ttf in Resources */,
+				E9F318962988BD3A002FC92B /* WorkSans-Thin.ttf in Resources */,
+				E9F3188C2988BD3A002FC92B /* WorkSans-SemiBoldItalic.ttf in Resources */,
+				E9F318972988BD3A002FC92B /* WorkSans-Black.ttf in Resources */,
+				E9F318952988BD3A002FC92B /* WorkSans-BlackItalic.ttf in Resources */,
+				E9F318932988BD3A002FC92B /* WorkSans-SemiBold.ttf in Resources */,
+				E9F318902988BD3A002FC92B /* WorkSans-ThinItalic.ttf in Resources */,
 				E9B4C96D28BDA05C0060C5FE /* Preview Assets.xcassets in Resources */,
 				E9B4C96A28BDA05C0060C5FE /* Assets.xcassets in Resources */,
+				E9F3188B2988BD3A002FC92B /* WorkSans-ExtraBold.ttf in Resources */,
+				E9F318992988BD3A002FC92B /* WorkSans-ExtraBoldItalic.ttf in Resources */,
+				E9F3188A2988BD3A002FC92B /* WorkSans-Light.ttf in Resources */,
+				E9F3188F2988BD3A002FC92B /* WorkSans-ExtraLight.ttf in Resources */,
+				E9F3188E2988BD3A002FC92B /* WorkSans-BoldItalic.ttf in Resources */,
+				E9F3189A2988BD3A002FC92B /* WorkSans-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1070,10 +1196,12 @@
 				E99B48DB290A9C450097F4C0 /* AsyncAwaitBootcamp.swift in Sources */,
 				E9D3141228D335760053DC57 /* DownloadingImagesBootcamp.swift in Sources */,
 				E9E4E2BF2963C0A700423ACD /* HomeView.swift in Sources */,
-				E92C82A8294AE9CA001C0C18 /* WolframAlphaResult.swift in Sources */,
 				E95F51B82922560A003B9DA9 /* GeometryPreferenceKeyBootcamp.swift in Sources */,
 				E9EC98EE292B028B00F610D2 /* AppTabBarView.swift in Sources */,
+				E9083C8B2978CAD7005E5E27 /* RingView.swift in Sources */,
+				E98E8E70296CE9E900E35281 /* UpdateStore.swift in Sources */,
 				E9D3141428D336710053DC57 /* PhotoMdoel.swift in Sources */,
+				E98E8E72296CEF0B00E35281 /* TabBar.swift in Sources */,
 				E95F51BA292388BB003B9DA9 /* ScrollViewOffsetPreferenceKeyBootcamp.swift in Sources */,
 				E9D3141E28D372760053DC57 /* ImageLoadingViewModel.swift in Sources */,
 				E964772E29627448004C740A /* Home.swift in Sources */,
@@ -1088,9 +1216,11 @@
 				E99B48F42910BA810097F4C0 /* CustomCurvesBootcamp.swift in Sources */,
 				E9D3141628D336EC0053DC57 /* DownloadingImagesViewModel.swift in Sources */,
 				E95F51B529222D3D003B9DA9 /* PreferencKeyBootcamp.swift in Sources */,
+				E9F318752988B7C8002FC92B /* Modifiers.swift in Sources */,
 				E9D313CB28D1E49F0053DC57 /* CacheBootCamp.swift in Sources */,
 				E99B48DE290F4A580097F4C0 /* MatchedGeometryBootcamp.swift in Sources */,
 				E9FB62452946C79500731FF4 /* PrimeNumberView.swift in Sources */,
+				E98E8E6E296CE76A00E35281 /* UpdateDetail.swift in Sources */,
 				E99B48D8290A942C0097F4C0 /* AnyTransitionBootcamp.swift in Sources */,
 				E9CA09BD2911E1DE003DF502 /* AnimateableDataBootcamp.swift in Sources */,
 				E9D3141A28D371560053DC57 /* DownloadingImagesRow.swift in Sources */,
@@ -1121,6 +1251,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E98E8E79296D0E5A00E35281 /* WolframAlphaResult.swift in Sources */,
 				E9E4E3462965112E00423ACD /* Counter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1184,6 +1315,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E98E8E77296D0DF100E35281 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E9E4E2E529650D9900423ACD /* PrimeModal */;
+			targetProxy = E98E8E76296D0DF100E35281 /* PBXContainerItemProxy */;
+		};
 		E9B4C97428BDA05C0060C5FE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E9B4C96128BDA05C0060C5FE /* SwiftUIBoot */;

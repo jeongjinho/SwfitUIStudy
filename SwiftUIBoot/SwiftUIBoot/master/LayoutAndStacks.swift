@@ -92,11 +92,11 @@ struct LayoutAndStacks: View {
                 .offset(y: -350)
             
             
-            BottomCardView()
+            BottomCardView(show: $showCard)
                 .offset(x: 0, y: showCard ? 360 : 1000)
                 .offset(y: bottomStsate.height)
                 .blur(radius: show ? 20 : 0)
-                .animation(.timingCurve(0.2, 0.8, 0.2, 1, duration: 0.8))
+               .animation(.timingCurve(0.2, 0.8, 0.2, 1, duration: 0.8), value: showCard)
                 .gesture(DragGesture()
                     .onChanged({ value in
                         self.bottomStsate = value.translation
@@ -190,6 +190,9 @@ struct TitleView: View {
 }
 
 struct BottomCardView: View {
+    
+    @Binding var show: Bool
+    
     var body: some View {
         VStack {
             Rectangle()
@@ -202,6 +205,24 @@ struct BottomCardView: View {
                 .multilineTextAlignment(.center)
                 .font(.subheadline)
                 .lineSpacing(4)
+            
+            HStack(spacing: 20) {
+                RingView(color1: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), color2: #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1), width: 88, height: 88, percent: 78, show: $show)
+                
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("SwiftUI").fontWeight(.bold)
+                    Text("12 of 12 sections completed\n10 hours spend to far")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                        .lineSpacing(4)
+                }
+                .padding(20)
+                .background(Color.white)
+                .cornerRadius(20)
+                .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y:10)
+            }
+                
+              
             Spacer()
         }
         .padding(.top, 8)
